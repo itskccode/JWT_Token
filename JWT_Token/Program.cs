@@ -1,3 +1,6 @@
+using JWT_Token.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//var provider = builder.Services.BuildServiceProvider();
+//var config=provider.GetRequiredService<IConfiguration>();
+
+//builder.Services.AddDbContext<MyDBContext>(item => item.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContext<MyDBContext>(options => options.UseSqlServer("server=DESKTOP-6KEJG95\\SQLEXPRESS;database=EmpDb;trusted_connection=true;"));
+
 
 var app = builder.Build();
 //test git
